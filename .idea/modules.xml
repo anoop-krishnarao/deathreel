@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deathreel.client.iml" filepath="$PROJECT_DIR$/.idea/modules/deathreel.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deathreel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/deathreel.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deathreel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/deathreel.test.iml" />
+    </modules>
+  </component>
+</project>

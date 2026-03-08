@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "deathreel",
+	"version": "1.0.0",
+	"name": "DeathReel",
+	"description": "Records your last 60 seconds before death and replays a ghost of your final moments.",
+	"authors": [
+		"anoop-krishnarao"
+	],
+	"contact": {
+		"homepage": "https://github.com/anoop-krishnarao/deathreel",
+		"sources": "https://github.com/anoop-krishnarao/deathreel"
+	},
+	"license": "MIT",
+	"icon": "assets/deathreel/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.anoopkrishnarao.deathreel.DeathReelClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "deathreel.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.18.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
