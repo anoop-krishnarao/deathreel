@@ -1,0 +1,4 @@
+/kill
+/gamemode creative
+/gamemode survival
+/kill

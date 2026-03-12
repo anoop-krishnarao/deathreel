@@ -8,6 +8,7 @@ public class FrameRecorder {
     private final PlayerFrame[] frames = new PlayerFrame[BUFFER_SIZE];
     private int head = 0;
     private int size = 0;
+    private boolean snapshotted = false;
 
     public void record(LocalPlayer player) {
         frames[head] = new PlayerFrame(
@@ -27,6 +28,7 @@ public class FrameRecorder {
     }
 
     public PlayerFrame[] snapshot() {
+        snapshotted = true;
         PlayerFrame[] result = new PlayerFrame[size];
         for (int i = 0; i < size; i++) {
             result[i] = frames[(head - size + i + BUFFER_SIZE) % BUFFER_SIZE];
@@ -37,5 +39,14 @@ public class FrameRecorder {
     public void reset() {
         head = 0;
         size = 0;
+        snapshotted = false;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public boolean hasSnapshotted() {
+        return snapshotted;
     }
 }
