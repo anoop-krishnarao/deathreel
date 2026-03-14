@@ -2,3 +2,8 @@
 /gamemode creative
 /gamemode survival
 /kill
+/time day
+/time set day
+/give Player839 minecraft:cobblestone 64
+/kill
+/weather clear

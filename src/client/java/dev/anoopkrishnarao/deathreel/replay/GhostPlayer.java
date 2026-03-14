@@ -21,6 +21,9 @@ public class GhostPlayer {
         }
         PlayerFrame frame = frames[currentFrame];
         entity.setPos(frame.x, frame.y, frame.z);
+        entity.setYRot(frame.yaw);
+        entity.setXRot(frame.pitch);
+        entity.yHeadRot = frame.yaw;
         currentFrame++;
     }
 
