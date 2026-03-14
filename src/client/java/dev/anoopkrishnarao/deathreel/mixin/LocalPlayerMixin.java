@@ -1,13 +1,13 @@
 package dev.anoopkrishnarao.deathreel.mixin;
 
+import com.mojang.authlib.GameProfile;
 import dev.anoopkrishnarao.deathreel.DeathReelClient;
 import dev.anoopkrishnarao.deathreel.recorder.PlayerFrame;
 import dev.anoopkrishnarao.deathreel.replay.GhostPlayer;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.client.player.RemotePlayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.zombie.Zombie;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -30,11 +30,14 @@ public class LocalPlayerMixin {
                     + DeathReelClient.RECORDER.getSize());
             DeathReelClient.lastSnapshot = DeathReelClient.RECORDER.snapshot();
 
-            // Spawn ghost and start replay
+            // Spawn ghost using player's skin
             ClientLevel clientLevel = (ClientLevel) player.level();
-            Zombie ghost = new Zombie(EntityType.ZOMBIE, clientLevel);
+            GameProfile profile = player.getGameProfile();
+            RemotePlayer ghost = new RemotePlayer(clientLevel, profile);
             ghost.setPos(player.getX(), player.getY(), player.getZ());
-            ghost.setNoAi(true);
+            ghost.setYRot(player.getYRot());
+            ghost.setXRot(player.getXRot());
+            ghost.yHeadRot = player.getYRot();
             clientLevel.addEntity(ghost);
             DeathReelClient.activeGhost = new GhostPlayer(ghost, DeathReelClient.lastSnapshot);
             DeathReelClient.LOGGER.info("DeathReel: Ghost spawned, starting replay.");

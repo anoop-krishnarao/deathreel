@@ -1,15 +1,15 @@
 package dev.anoopkrishnarao.deathreel.replay;
 
 import dev.anoopkrishnarao.deathreel.recorder.PlayerFrame;
-import net.minecraft.world.entity.monster.zombie.Zombie;
+import net.minecraft.client.player.RemotePlayer;
 
 public class GhostPlayer {
-    private final Zombie entity;
+    private final RemotePlayer entity;
     private final PlayerFrame[] frames;
     private int currentFrame = 0;
     private boolean finished = false;
 
-    public GhostPlayer(Zombie entity, PlayerFrame[] frames) {
+    public GhostPlayer(RemotePlayer entity, PlayerFrame[] frames) {
         this.entity = entity;
         this.frames = frames;
     }
@@ -28,5 +28,5 @@ public class GhostPlayer {
     }
 
     public boolean isFinished() { return finished; }
-    public Zombie getEntity()   { return entity; }
+    public RemotePlayer getEntity() { return entity; }
 }
