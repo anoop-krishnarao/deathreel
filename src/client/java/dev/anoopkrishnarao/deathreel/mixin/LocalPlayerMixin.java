@@ -1,6 +1,8 @@
 package dev.anoopkrishnarao.deathreel.mixin;
 
 import dev.anoopkrishnarao.deathreel.DeathReelClient;
+import dev.anoopkrishnarao.deathreel.recorder.PlayerFrame;
+import dev.anoopkrishnarao.deathreel.replay.GhostPlayer;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.EntityType;
@@ -26,15 +28,16 @@ public class LocalPlayerMixin {
             deathHandled = true;
             DeathReelClient.LOGGER.info("DeathReel: Player died! Frames recorded: "
                     + DeathReelClient.RECORDER.getSize());
-            DeathReelClient.RECORDER.snapshot();
+            DeathReelClient.lastSnapshot = DeathReelClient.RECORDER.snapshot();
 
-            // Spawn a zombie as a temporary ghost placeholder
+            // Spawn ghost and start replay
             ClientLevel clientLevel = (ClientLevel) player.level();
             Zombie ghost = new Zombie(EntityType.ZOMBIE, clientLevel);
             ghost.setPos(player.getX(), player.getY(), player.getZ());
             ghost.setNoAi(true);
             clientLevel.addEntity(ghost);
-            DeathReelClient.LOGGER.info("DeathReel: Ghost spawned at death position.");
+            DeathReelClient.activeGhost = new GhostPlayer(ghost, DeathReelClient.lastSnapshot);
+            DeathReelClient.LOGGER.info("DeathReel: Ghost spawned, starting replay.");
 
             DeathReelClient.RECORDER.reset();
         }
