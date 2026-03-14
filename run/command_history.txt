@@ -10,3 +10,7 @@
 /kill
 /give Player219 minecraft:blue_bed 1
 /kill
+/time set day
+/kill
+/time set day
+/kill

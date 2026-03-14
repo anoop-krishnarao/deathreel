@@ -1,0 +1,24 @@
+{
+  "stats": {
+    "minecraft:used": {
+      "minecraft:cobblestone": 1
+    },
+    "minecraft:picked_up": {
+      "minecraft:cobblestone": 52
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 783,
+      "minecraft:fall_one_cm": 300,
+      "minecraft:walk_one_cm": 4094,
+      "minecraft:total_world_time": 1736,
+      "minecraft:leave_game": 1,
+      "minecraft:walk_under_water_one_cm": 458,
+      "minecraft:walk_on_water_one_cm": 466,
+      "minecraft:play_time": 1653,
+      "minecraft:deaths": 1,
+      "minecraft:jump": 16,
+      "minecraft:time_since_death": 0
+    }
+  },
+  "DataVersion": 4671
+}

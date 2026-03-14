@@ -5,7 +5,8 @@
 	"mixins": [
 	],
 	"client": [
-		"LocalPlayerMixin"
+		"LocalPlayerMixin",
+		"DeathScreenMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

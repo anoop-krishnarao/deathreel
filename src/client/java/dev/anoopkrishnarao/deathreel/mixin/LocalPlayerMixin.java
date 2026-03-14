@@ -24,7 +24,7 @@ public class LocalPlayerMixin {
         if (player.getHealth() > 0) {
             deathHandled = false;
             DeathReelClient.RECORDER.record(player);
-        } else if (!deathHandled && DeathReelClient.RECORDER.getSize() > 20) {
+        } else if (!deathHandled && DeathReelClient.RECORDER.getSize() > 5) {
             deathHandled = true;
             DeathReelClient.LOGGER.info("DeathReel: Player died! Frames recorded: "
                     + DeathReelClient.RECORDER.getSize());

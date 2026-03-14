@@ -1,6 +1,8 @@
 package dev.anoopkrishnarao.deathreel.replay;
 
 import dev.anoopkrishnarao.deathreel.recorder.PlayerFrame;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.client.player.RemotePlayer;
 
 public class GhostPlayer {
@@ -20,10 +22,25 @@ public class GhostPlayer {
             return;
         }
         PlayerFrame frame = frames[currentFrame];
+
+        // Position
         entity.setPos(frame.x, frame.y, frame.z);
+
+        // Rotation
         entity.setYRot(frame.yaw);
         entity.setXRot(frame.pitch);
         entity.yHeadRot = frame.yaw;
+
+        // Velocity
+        entity.setDeltaMovement(new Vec3(frame.vx, frame.vy, frame.vz));
+
+        // Pose
+        entity.setPose(frame.pose);
+
+        // Sneaking/sprinting
+        entity.setShiftKeyDown(frame.isSneaking);
+        entity.setSprinting(frame.isSprinting);
+
         currentFrame++;
     }
 
