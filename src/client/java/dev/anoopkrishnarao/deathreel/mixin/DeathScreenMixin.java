@@ -2,6 +2,7 @@ package dev.anoopkrishnarao.deathreel.mixin;
 
 import dev.anoopkrishnarao.deathreel.DeathReelClient;
 import dev.anoopkrishnarao.deathreel.gui.ReplayButton;
+import dev.anoopkrishnarao.deathreel.gui.ReplayViewerScreen;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.DeathScreen;
 import net.minecraft.client.gui.screens.Screen;
@@ -53,14 +54,16 @@ public class DeathScreenMixin extends Screen {
             }
         }
 
-        // Add Death Replay button with pulsing REC dot
+        // Add Death Replay button
         deathReelReplayButton = new ReplayButton(
                 startX + VANILLA_BUTTON_WIDTH * 2 + gap * 2, buttonY,
                 REPLAY_BUTTON_WIDTH, BUTTON_HEIGHT,
                 Component.literal("Death Replay")
                         .withStyle(Style.EMPTY.withColor(REPLAY_BUTTON_COLOR)),
                 button -> {
-                    DeathReelClient.LOGGER.info("DeathReel: Opening replay viewer.");
+                    this.minecraft.setScreen(
+                            new ReplayViewerScreen((Screen)(Object)this)
+                    );
                 }
         );
 
